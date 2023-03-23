@@ -2,6 +2,8 @@
 let rockBtn = document.querySelector(".rock");
 let papeBtn = document.querySelector(".paper");
 let scisBtn = document.querySelector(".scissors");
+let userScore = 0;
+let computerScore = 0;
 
 // console.log(compPickNum);
 
@@ -15,6 +17,11 @@ function compPickLogic() {
 		compPick = 'scissors'
 	}
 };
+
+function reset() {
+	userScore = 0;
+	computerScore = 0;
+}
 
 compPickLogic()
 
@@ -44,15 +51,26 @@ scisBtn.addEventListener("click", () => {
 
 function gameLogic(u,c) {
 	if ((u === "scissors" && c === "paper") || (u === "rock" && c === "scissors") || (u === "paper" && c === "rock")) {
-		console.log("You win! " + u + " beats " + c +" !")
+		console.log("You win the round! " + u + " beats " + c +" !")
+		userScore = userScore + 1
 	} 
 	else if ((c === "scissors" && u === "paper") || (c === "rock" && u === "scissors") || (c === "paper" && u === "rock"))  {
-		console.log("You lose! " + c + " beats " + u +" !")
+		console.log("You lose the round! " + c + " beats " + u +" !")
+		computerScore = computerScore + 1
 	} else {
 		console.log("tie?")
 		console.log("computer chose " + c)
 	}
 	compPickLogic()
+	if (userScore === 5) {
+		console.log("You won 5 rounds!")
+		reset()
+		return;
+	} else if (computerScore === 5) {
+		console.log("The computer won 5 rounds!")
+		reset()
+		return;
+	}
 }
 
 
