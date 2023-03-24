@@ -1,10 +1,10 @@
-let rockBtn = document.querySelector(".rock");
-let papeBtn = document.querySelector(".paper");
-let scisBtn = document.querySelector(".scissors");
-// let userScore = 0;
-// let computerScore = 0;
+let playBtn = document.querySelector(".play");
 
-// console.log(compPickNum);
+playBtn.addEventListener("click", () => {
+	gameLogic()
+});
+
+compPickLogic()
 
 function compPickLogic() {
 	let c = Math.floor(Math.random()*3)+1;
@@ -22,30 +22,6 @@ function reset() {
 	computerScore = 0;
 }
 
-compPickLogic()
-
-// console.log(compPick)
-
-
-// rockBtn.addEventListener("click", () => {
-// 	let userPick = rockBtn.getAttribute('id')
-// 	console.log(userPick)
-// 	gameLogic(userPick,compPick)
-// });
-
-// papeBtn.addEventListener("click", () => {
-// 	let userPick = papeBtn.getAttribute('id')
-// 	console.log(userPick)
-// 	gameLogic(userPick,compPick)
-// });
-
-// scisBtn.addEventListener("click", () => {
-// 	let userPick = scisBtn.getAttribute('id')
-// 	console.log(userPick)
-// 	gameLogic(userPick,compPick)
-// });
-
-
 function playRound(u,c,i) {
 	if ((u === "scissors" && c === "paper") || (u === "rock" && c === "scissors") || (u === "paper" && c === "rock")) {
 		console.log("You win! " + u.substr(0,1).toUpperCase() + u.slice(1) + " beats " + c +"!")
@@ -60,28 +36,6 @@ function playRound(u,c,i) {
 	}
 }
 
-
-// function gameLogic() {
-// 	playRound(userPick,compPick)
-// 	compPickLogic()
-// 	if (userScore === 5) {
-// 		console.log("You won 5 rounds!")
-// 		reset()
-// 		return;
-// 	} else if (computerScore === 5) {
-// 		console.log("The computer won 5 rounds!")
-// 		reset()
-// 		return;
-// 	}
-// }
-
-
-let playBtn = document.querySelector(".play");
-
-playBtn.addEventListener("click", () => {
-	gameLogic()
-});
-
 function gameLogic() {
 	userScore = 0;
 	computerScore = 0;
@@ -93,7 +47,6 @@ function gameLogic() {
 			console.log("Replay round: " + i)
 			i--
 		}
-
 	}
 	compPickLogic()
 	if (userScore > computerScore) {
